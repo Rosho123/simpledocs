@@ -103,7 +103,8 @@ $('.logout').hide();
 				
 			var	dcryptedcontent = blowfish.decrypt( content,  uid,  {outputType: 1, cipherMode: 0})
 				
-			  $('#editor-text').val(dcryptedcontent);
+			 
+				$('#beta-editor').html(dcryptedcontent);
 				$('#loader').hide();
 				
 				
@@ -114,7 +115,8 @@ $('.logout').hide();
 				
 				
 				setInterval(function(){ 
-				var currentcontent = $('#editor-text').val();
+				var currentcontent = $('#beta-editor').html();;
+					console.log(currentcontent);
 				var enccontnet = blowfish.encrypt( currentcontent,  uid,  {outputType: 1, cipherMode: 0})
 					
 				if (enccontnet == content) {
@@ -176,7 +178,9 @@ $('.logout').hide();
 			$('#content').append('<a href="' + documentredirecturl +'"><div style="height: 10%;" class="hoverable docbtn card-panel"><p class="doctxt grey-text text-darken-3"><i class="material-icons">insert_drive_file</i>&nbsp;' + dcryptdocname + '</p></div></a>');
 		});
 		}
-	  
+	  	$('#canceldelete').click(function (e) {
+			$('#loader').hide();
+		});
 	  	$("#deletedoc").click(function (e) {
 			$('#loader').show();
 			 $('.modal').modal();
