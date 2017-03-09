@@ -97,6 +97,7 @@ $('.logout').hide();
 				 var name = snapshot.val().name;
 				var dcrname = blowfish.decrypt( name,  uid,  {outputType: 1, cipherMode: 0})
 				var doctitle = 'Docs | ' + dcrname;
+				$('#documentname').text(dcrname)
 				document.title = doctitle;
 				console.log(doctitle);
 				
@@ -106,27 +107,56 @@ $('.logout').hide();
 			 
 				$('#beta-editor').html(dcryptedcontent);
 				$('#loader').hide();
-				
+				$("#saved").click(function() {
+					var currentcontent = $('#beta-editor').html();
+					var currentname = $('#documentname').text();
+					var enccontnet = blowfish.encrypt( currentcontent,  uid,  {outputType: 1, cipherMode: 0});
+					var encname = blowfish.encrypt( currentname,  uid,  {outputType: 1, cipherMode: 0});
+					 var updates = {};
+					updates['docs/users/' + uid + '/docs/' + doctoload + '/content'] = enccontnet;
+					
+					firebase.database().ref().update(updates);
+					var updates = {};
+					updates['docs/users/' + uid + '/docs/' + doctoload + '/name'] = encname;
+					
+					firebase.database().ref().update(updates);
+					$("#saved").text("Saved");
+					
+				});
 				
 			});
 			docloadRef.on('value', function(snapshot) {
 				content = snapshot.val().content;
 				
-				
-				
-				setInterval(function(){ 
-				var currentcontent = $('#beta-editor').html();;
-					console.log(currentcontent);
+				setInterval( function() {
+					var currentcontent = $('#beta-editor').html();
+			
 				var enccontnet = blowfish.encrypt( currentcontent,  uid,  {outputType: 1, cipherMode: 0})
 					
 				if (enccontnet == content) {
-					console.log('same');
+					
+					$("#saved").text("Saved");
 				} else {
-					console.log(currentcontent);
+					
+					$("#saved").text("Unsaved");
+				}
+				}, 300);
+				
+				setInterval(function(){ 
+				var currentcontent = $('#beta-editor').html();;
+				
+				var enccontnet = blowfish.encrypt( currentcontent,  uid,  {outputType: 1, cipherMode: 0})
+					
+				if (enccontnet == content) {
+				
+					$("#saved").text("Saved");
+				} else {
+					
 					  var updates = {};
 					updates['docs/users/' + uid + '/docs/' + doctoload + '/content'] = enccontnet;
-					Materialize.toast('Saved', 1000);
-					firebase.database().ref().update(updates)
+					
+					firebase.database().ref().update(updates);
+					$("#saved").text("Saved");
 				}
 				
 				
@@ -175,7 +205,7 @@ $('.logout').hide();
 		   console.log(currentDocKey + " " + currentDocName);
 			var dcryptdocname = blowfish.decrypt( currentDocName,  uid,  {outputType: 1, cipherMode: 0})
 			var documentredirecturl = 'index.html?doc=' + currentDocKey;
-			$('#content').append('<a href="' + documentredirecturl +'"><div style="height: 10%;" class="hoverable docbtn card-panel"><p class="doctxt grey-text text-darken-3"><i class="material-icons">insert_drive_file</i>&nbsp;' + dcryptdocname + '</p></div></a>');
+			$('#content').prepend('<div style=" margin: 1%; width: 48%; float: left;"><a href="' + documentredirecturl +'"><div style=" position: relative;" class="hoverable docbtn card-panel"><p class="doctxt grey-text text-darken-3" style="bottom: 50px; line-height: normal;"><i class="material-icons green-text text-lighten-1">insert_drive_file</i>&nbsp;' + dcryptdocname + '</p></div></a></div>');
 		});
 		}
 	  	$('#canceldelete').click(function (e) {
