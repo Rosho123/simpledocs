@@ -120,27 +120,38 @@ $('.logout').hide();
 					updates['docs/users/' + uid + '/docs/' + doctoload + '/name'] = encname;
 					
 					firebase.database().ref().update(updates);
-					$("#saved").text("Saved");
+					$("#save-text").text("Saved");
 					
 				});
 				
 			});
 			docloadRef.on('value', function(snapshot) {
 				content = snapshot.val().content;
-				
+				name = snapshot.val().name;
 				setInterval( function() {
 					var currentcontent = $('#beta-editor').html();
+				
+					var currentname = $('#documentname').text();
+					var encname = blowfish.encrypt( currentname,  uid,  {outputType: 1, cipherMode: 0});
 			
 				var enccontnet = blowfish.encrypt( currentcontent,  uid,  {outputType: 1, cipherMode: 0})
 					
 				if (enccontnet == content) {
 					
-					$("#saved").text("Saved");
+					$("#save-text").text("Saved");
 				} else {
 					
-					$("#saved").text("Unsaved");
+					$("#save-text").text("Unsaved");
+				}
+					if (encname == name) {
+					
+					$("#save-text").text("Saved");
+				} else {
+					
+					$("#save-text").text("Unsaved");
 				}
 				}, 300);
+				
 				
 				setInterval(function(){ 
 				var currentcontent = $('#beta-editor').html();;
@@ -149,14 +160,34 @@ $('.logout').hide();
 					
 				if (enccontnet == content) {
 				
-					$("#saved").text("Saved");
+					$("#save-text").text("Saved");
 				} else {
-					
+						var currentname = $('#documentname').text();
+					var encname = blowfish.encrypt( currentname,  uid,  {outputType: 1, cipherMode: 0});
 					  var updates = {};
 					updates['docs/users/' + uid + '/docs/' + doctoload + '/content'] = enccontnet;
 					
 					firebase.database().ref().update(updates);
-					$("#saved").text("Saved");
+					updates['docs/users/' + uid + '/docs/' + doctoload + '/name'] = encname;
+					
+					firebase.database().ref().update(updates);
+					$("#save-text").text("Saved");
+				}
+					var currentname = $('#documentname').text();
+					var encname = blowfish.encrypt( currentname,  uid,  {outputType: 1, cipherMode: 0});
+				if (encname == name) {
+				
+					$("#save-text").text("Saved");
+				} else {
+						
+					  var updates = {};
+				
+					
+					firebase.database().ref().update(updates);
+					updates['docs/users/' + uid + '/docs/' + doctoload + '/name'] = encname;
+					
+					firebase.database().ref().update(updates);
+					$("#save-text").text("Saved");
 				}
 				
 				
