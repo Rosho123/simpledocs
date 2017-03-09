@@ -37,6 +37,9 @@
 	div:focus {
     outline: rgba(88,88,88,1.00);;
 }
+	  h5:focus {
+    outline: solid rgba(88,88,88,0.1);;
+}
 	  
 	  
 	</style>
@@ -68,8 +71,10 @@
         <div class="indeterminate"></div>
     </div>
 	<div id="content" style="height: 100%;" class="container">
-		<div id="editor" style="min-height: 500px; padding: 10px;" class="card-panel grey-text text-darken-3">
-		<div spellcheck="true" style="margin: 5px; min-height: 480px; border-color: rgba(88,88,88,0.1);-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; padding: 1%; border: 0.5px solid;" class="grey-text text-darken-3" id="beta-editor" contenteditable="true"></div>
+	
+		<div id="editor" style=" min-height: 500px; padding: 10px;" class="card-panel grey-text text-darken-3">
+		<h6 style="float: left;" class="btn-flat waves-effect waves-green grey-text" id="saved"></h6> <h5 id="documentname" contenteditable="true" style="text-align: center;"></h5>
+		<div spellcheck="true" style="margin: 5px; min-height: 480px; border-color: rgba(127,127,127,1.00);-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; padding: 1%; border: 0.5px solid;" class="grey-text text-darken-3" id="beta-editor" contenteditable="true"></div>
 			<!--<textarea onkeyup="auto_grow(this)" id="editor-text" style=" resize: none; overflow: hidden; min-height: 50px; width: 100%; border-color: rgba(88,88,88,0.1);-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" ></textarea>-->
 
 		</div>
