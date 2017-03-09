@@ -30,11 +30,12 @@
   
   
   <script src="main.js"></script>
+	
   
   <style>
 	  
-	textarea:focus {
-    outline: none;
+	div:focus {
+    outline: rgba(88,88,88,1.00);;
 }
 	  
 	  
@@ -43,7 +44,7 @@
 <header>
 	 <nav>
     <div class="white nav-wrapper">
-      <a href="index.html" class="brand-logo grey-text text-darken-3">&nbsp;Docs</a>
+      <a href="index.html" class="brand-logo grey-text text-darken-3">&nbsp;&nbsp;Docs</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse grey-text text-darken-3" ><i class="grey-text text-darken-3 material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a class="grey-text text-darken-3" href="index.html">Docs</a></li>
@@ -67,8 +68,9 @@
         <div class="indeterminate"></div>
     </div>
 	<div id="content" style="height: 100%;" class="container">
-		<div id="editor" style="height: 100%; padding: 10px;" class="card-panel grey-text text-darken-3">
-			<textarea id="editor-text" style="  height: 100%; width: 100%; border-color: rgba(88,88,88,0.1);-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" ></textarea>
+		<div id="editor" style="min-height: 500px; padding: 10px;" class="card-panel grey-text text-darken-3">
+		<div style="margin: 5px; min-height: 480px; border-color: rgba(88,88,88,0.1);-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; padding: 1%; border: 0.5px solid;" id="beta-editor" contenteditable="true"></div>
+			<!--<textarea onkeyup="auto_grow(this)" id="editor-text" style=" resize: none; overflow: hidden; min-height: 50px; width: 100%; border-color: rgba(88,88,88,0.1);-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" ></textarea>-->
 
 		</div>
 
@@ -87,7 +89,7 @@
     </div>
     <div class="modal-footer">
       <a href="#!" id="deletethisdoc" class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
-      <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+      <a href="#!" id="canceldelete" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
     </div>
   </div>
    
