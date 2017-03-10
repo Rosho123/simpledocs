@@ -33,13 +33,21 @@
 	
   
   <style>
-	  
+	  #documentname {
+		  transition-duration: .5s; 
+	  }
+	  #documentname:hover {
+		  transition-duration: .5s;
+		border: thin solid #C7C7C7;
+
+	
+	  }
 	div:focus {
     outline: rgba(88,88,88,1.00);
 	-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
 }
 	  h5:focus {
-    outline: solid rgba(88,88,88,0.1);;
+   outline: none;
 }
 	  
 	  
@@ -67,15 +75,20 @@
   </nav>	
 	
 </header>
-<body style="height: 100%; width: 100%;">
+<body style=" background-color: rgba(238,238,238,1.00); height: 100%; width: 100%;">
  <div id="loader" style="width: 100%; margin: 0px;" class="progress">
         <div class="indeterminate"></div>
     </div>
 	<div id="content" style="height: 100%;" class="container">
 	
-		<div id="editor" style=" min-height: 500px; padding: 10px;" class="card-panel grey-text text-darken-3">
-		<h6 style="float: left; width: 15%;" class="btn-flat waves-effect waves-green grey-text" id="saved"><span id="save-text"></span></h6> <h5 id="documentname" contenteditable="true" style="text-align: center;"></h5>
-		<div spellcheck="true" style="margin: 5px; min-height: 480px; border-color: rgba(127,127,127,1.00);-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; padding: 1%; border: 0.5px solid;" class="grey-text text-darken-3" id="beta-editor" contenteditable="true"></div>
+		<div id="editor" style=" min-height: 500px; padding: 10px;" class="grey-text text-darken-3">
+		<div style=" background-color: #F6F6F6; display: block;" class=" card-panel"><h6 style="float: left; width: 15%;" class=" btn-flat waves-effect waves-green grey-text" id="saved"><span style="width: 100%; text-align: center; margin-left: auto; margin-right: auto;" id="save-text"></span></h6> <h5  id="documentname" contenteditable="true" style="  text-align: center;"></h5></div>
+		
+	
+		<div class="card-panel">
+			<div spellcheck="true" style="margin: 5px; min-height: 480px; " class="grey-text text-darken-3" id="beta-editor" contenteditable="true">
+		</div>
+		</div>
 			<!--<textarea onkeyup="auto_grow(this)" id="editor-text" style=" resize: none; overflow: hidden; min-height: 50px; width: 100%; border-color: rgba(88,88,88,0.1);-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" ></textarea>-->
 
 		</div>
