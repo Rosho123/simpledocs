@@ -35,7 +35,8 @@
   <style>
 	  
 	div:focus {
-    outline: rgba(88,88,88,1.00);;
+    outline: rgba(88,88,88,1.00);
+	-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
 }
 	  h5:focus {
     outline: solid rgba(88,88,88,0.1);;
@@ -73,7 +74,7 @@
 	<div id="content" style="height: 100%;" class="container">
 	
 		<div id="editor" style=" min-height: 500px; padding: 10px;" class="card-panel grey-text text-darken-3">
-		<h6 style="float: left;" class="btn-flat waves-effect waves-green grey-text" id="saved"><span id="save-text"></span></h6> <h5 id="documentname" contenteditable="true" style="text-align: center;"></h5>
+		<h6 style="float: left; width: 15%;" class="btn-flat waves-effect waves-green grey-text" id="saved"><span id="save-text"></span></h6> <h5 id="documentname" contenteditable="true" style="text-align: center;"></h5>
 		<div spellcheck="true" style="margin: 5px; min-height: 480px; border-color: rgba(127,127,127,1.00);-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; padding: 1%; border: 0.5px solid;" class="grey-text text-darken-3" id="beta-editor" contenteditable="true"></div>
 			<!--<textarea onkeyup="auto_grow(this)" id="editor-text" style=" resize: none; overflow: hidden; min-height: 50px; width: 100%; border-color: rgba(88,88,88,0.1);-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" ></textarea>-->
 
@@ -90,6 +91,7 @@
     </div>
   </div>
    
+ 
    
    <div id="modal1" class="modal">
     <div class="modal-content">
@@ -119,19 +121,43 @@
     <a id="newDoc" data-position="left" data-delay="50" data-tooltip="Create a new Doc" class="tooltipped btn-floating btn-large red">
       <i class="large material-icons">add</i>
     </a>
+  </div>
+      
+      <div id="deletedocfab" class="fixed-action-btn">
+     <a id="settings" class="btn-floating btn-large red">
+      <i class="large material-icons">settings</i>
+    </a>
     <ul>
-		
-		<li id="newdoc-template" data-tooltip="Create a new Doc with a template" data-position="left" data-delay="50" class="tooltip"><a class="btn-floating blue"><i class="material-icons">view_module</i></a></li>
+		<li id="share" data-tooltip="Get a public link" data-position="left" data-delay="50" class="tooltipped"><a href="#sharedoc" class="btn-floating blue"><i class="material-icons">link</i></a></li>
+		<li id="deletedoc" data-tooltip="Delete document" data-position="left" data-delay="50" class="tooltipped"><a class="btn-floating blue"><i class="material-icons">delete</i></a></li>
 	</ul>
   </div>
-       <div id="deletedocfab" class="fixed-action-btn">
-    <a data-position="left" data-delay="50" data-tooltip="Delete this document" id="deletedoc" class="btn-floating tooltiped btn-large red">
-      <i class="large material-icons">delete</i>
-    </a>
+ 	
+ 	<div id="sharedoc" class="modal">
+    <div class="modal-content">
+      <h4>Are you sure you want to create a public link for this document?</h4>
+      <p>This means that anyone with the link can view and edit</p>
+    </div>
+    <div class="modal-footer">
+      <a id="confirmshare" href="#shareinfo"  class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+      <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+    </div>
+  </div>
+  <div id="shareinfo" class="modal">
+    <div class="modal-content">
+      <h4>Share this link</h4>
+      <p id="sharelink"><div class="progress">
+      <div class="indeterminate"></div>
+  </div></p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+   
     
   </div>
         
-	</div>
 <script>
 	$('document').ready(function (e) {
 		$('.modal').modal();
