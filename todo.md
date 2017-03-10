@@ -1,5 +1,4 @@
 # TODO
 
-Add templates
-Sasha: front end
-Ronan the medicore: back end
+If sasha can find a use for templates make them \n
+Make stuff
