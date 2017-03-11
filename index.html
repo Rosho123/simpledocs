@@ -11,7 +11,96 @@
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    
-    	
+    <style>
+      html, body, .block {
+        height: 100%;
+      }
+      
+      .pin-top {
+    position: relative;
+		
+  }
+
+ 
+  .pin-bottom {
+    position: relative;
+	  
+  }
+
+  
+  .pinned {
+
+    position: fixed !important;
+  }
+	 .nav-wrapper {
+		
+    
+    box-shadow:  0px -1000px 1000px 50 rgba(255,255,255,0.7);
+	 }
+	 #about {
+		 transition-duration: 0.2s;
+	 }
+      footer {
+        padding-left: 0;
+      }
+    </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="animatescroll.min.js"></script>
+	  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script>
+		(function($){
+  $(function(){
+	  $('#learnmore').effect('shake', { times:2, distance:10});
+    
+  $('#about').hide();
+	  $('#contact').hide();
+	  $('#features-header').hide();
+	$('.feature').hide();
+	var options = [
+      {selector: '#content', offset: 500, callback: function(el) {
+      
+		   
+   $('#about').fadeIn("slow");
+   
+        
+  
+  
+      } },
+      {selector: '#features', offset: 200, callback: function(el) {
+        $('#features-header').fadeIn("slow");
+      } },
+      {selector: '#features', offset: 250, callback: function(el) {
+        $('.feature').fadeIn("slow");
+      } },
+      {selector: '#features', offset: 1300, callback: function(el) {
+		
+        $('#contact').fadeIn(1000);
+      } }
+    ];
+    Materialize.scrollFire(options);
+	  
+    if ($('.pushpin-demo-nav').length) {
+      $('.pushpin-demo-nav').each(function() {
+        var $this = $(this);
+        var $target = $('#' + $(this).attr('data-target'));
+        $this.pushpin({
+          top: $target.offset().top,
+          bottom: 100000
+        });
+      });
+    }
+
+   
+
+  }); // end of document ready
+})(jQuery); // end of jQuery name space
+	</script>	
 
   </head>
   <header id="header" style="height: 100%;" class=" valign-wrapper grey-text text-darken-3 white">
@@ -161,95 +250,6 @@
 
  
 	  </div>
-<style>
-      html, body, .block {
-        height: 100%;
-      }
-      
-      .pin-top {
-    position: relative;
-		
-  }
 
- 
-  .pin-bottom {
-    position: relative;
-	  
-  }
-
-  
-  .pinned {
-
-    position: fixed !important;
-  }
-	 .nav-wrapper {
-		
-    
-    box-shadow:  0px -1000px 1000px 50 rgba(255,255,255,0.7);
-	 }
-	 #about {
-		 transition-duration: 0.2s;
-	 }
-      footer {
-        padding-left: 0;
-      }
-    </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="animatescroll.min.js"></script>
-	  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script>
-		(function($){
-  $(function(){
-	  $('#learnmore').effect('shake', { times:2, distance:10});
-    
-  $('#about').hide();
-	  $('#contact').hide();
-	  $('#features-header').hide();
-	$('.feature').hide();
-	var options = [
-      {selector: '#content', offset: 500, callback: function(el) {
-      
-		   
-   $('#about').fadeIn("slow");
-   
-        
-  
-  
-      } },
-      {selector: '#features', offset: 200, callback: function(el) {
-        $('#features-header').fadeIn("slow");
-      } },
-      {selector: '#features', offset: 250, callback: function(el) {
-        $('.feature').fadeIn("slow");
-      } },
-      {selector: '#features', offset: 1300, callback: function(el) {
-		
-        $('#contact').fadeIn(1000);
-      } }
-    ];
-    Materialize.scrollFire(options);
-	  
-    if ($('.pushpin-demo-nav').length) {
-      $('.pushpin-demo-nav').each(function() {
-        var $this = $(this);
-        var $target = $('#' + $(this).attr('data-target'));
-        $this.pushpin({
-          top: $target.offset().top,
-          bottom: 100000
-        });
-      });
-    }
-
-   
-
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
-	</script>
   </body>
 </html>
