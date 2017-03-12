@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <title>Docs</title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
-  
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina|Roboto|Slabo+27px" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
 <script src="encryption.js"></script>
 <script>
@@ -143,10 +144,53 @@
     <ul>
 		<li id="share" data-tooltip="Get a public link" data-position="left" data-delay="50" class="tooltipped"><a href="#sharedoc" class="btn-floating blue"><i class="material-icons">link</i></a></li>
 		<li id="deletedoc" data-tooltip="Delete document" data-position="left" data-delay="50" class="tooltipped"><a class="btn-floating blue"><i class="material-icons">delete</i></a></li>
+		<li  data-tooltip="Edit font settings" data-position="left" data-delay="50" class="tooltipped"><a href="#fontsettingsmodal" class="btn-floating blue"><i class="material-icons">format_size</i></a></li>
 	</ul>
   </div>
  	
- 	<div id="sharedoc" class="modal">
+ 	
+   <div style="height: 70%" id="fontsettingsmodal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Font Settings</h4>
+      <hr>
+      <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input value="20px"  id="font_size" type="text" class="validate">
+          <label class="active" for="font_size">Font Size</label>
+        </div>
+        <div class="input-field col s6">
+          <input value="#2B2B2B" id="font_color" type="text" class="validate">
+          <label class="active" for="font_color">Font Color(RBG)</label>
+        </div>
+         <div class="row">
+        <div class="input-field col s12">
+      
+          <input value="Roboto" type="text" id="font-family" class="autocomplete">
+          <label class="active" for="font-family">Type in font family exactly from Google Fonts</label>
+        </div>
+      </div>
+
+      </div>
+     
+      
+      
+    </form>
+  </div>
+      
+      
+    </div>
+    <div class="modal-footer">
+      <a id="fontsettings"  class=" modal-action modal-close waves-effect waves-green btn-flat">Confirm</a>
+     
+    </div>
+  </div>
+   
+   
+   
+   
+   <div  id="sharedoc" class="modal">
     <div class="modal-content">
       <h4>Are you sure you want to create a public link for this document?</h4>
       <p>This means that anyone with the link can view and edit</p>
@@ -156,6 +200,7 @@
       <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
     </div>
   </div>
+  
   <div id="shareinfo" class="modal">
     <div class="modal-content">
       <h4>Share this link</h4>
@@ -174,10 +219,13 @@
 <script>
 	$('document').ready(function (e) {
 		$('.modal').modal();
+		$('select').material_select();
 		$('.tooltipped').tooltip({delay: 50});
 		$(".button-collapse").sideNav();
 		
+		
 	})
 </script>
+
 </body>
 </html>
