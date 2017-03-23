@@ -314,8 +314,8 @@ $('document').ready(function(e) {
                 docloadRef.on('value', function(snapshot) {
                     content = snapshot.val().content;
                     name = snapshot.val().name;
-
-                    $('#beta-editor').keyup(function() {
+ setInterval(function() {
+                   
                         var currentcontent = $('#beta-editor').html();
 
                         var currentname = $('#documentname').text();
@@ -345,8 +345,8 @@ $('document').ready(function(e) {
 
                             $("#save-text").text("Unsaved");
                         }
-                    });
-                    $('#documentname').keyup(function() {
+                  
+                    
                         var currentcontent = $('#beta-editor').html();
 
                         var currentname = $('#documentname').text();
@@ -376,9 +376,9 @@ $('document').ready(function(e) {
 
                             $("#save-text").text("Unsaved");
                         }
-                    });
+                  
 
-
+ }, 1000);
                     setInterval(function() {
                         var currentcontent = $('#beta-editor').html();;
 
