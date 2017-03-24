@@ -1,15 +1,15 @@
 CACHE MANIFEST
-# v1
+# v2
 CACHE:
-/index.html
-/app.html
-/animatescroll.min.js
-/encryption.js
-/main.js
+/simpledocs/index.html
+/simpledocs/app.html
+/simpledocs/animatescroll.min.js
+/simpledocs/encryption.js
+/simpledocs/main.js
 https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
 https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css
 https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js
 FALLBACK:
-/ /offline.html
+/ /simpledocs/offline.html
 NETWORK:
 *
