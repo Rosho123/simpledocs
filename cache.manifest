@@ -1,15 +1,13 @@
 CACHE MANIFEST
-# v7
+# v11
 CACHE:
-/simpledocs/index.html
-/simpledocs/app.html
-/simpledocs/animatescroll.min.js
-/simpledocs/encryption.js
-/simpledocs/main.js
-/simpledocs/js/materialize.min.js
-/simpledocs/css/materialize.min.css
-/simpledocs/jquery.min.js
+js/materialize.min.js
+css/materialize.min.css
+jquery.min.js
+offline.js
+index.html
+app.html
 FALLBACK:
-/ /simpledocs/offline.html
+/ offline.html
 NETWORK:
 *
