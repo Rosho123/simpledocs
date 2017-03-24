@@ -1,5 +1,10 @@
 <!doctype html>
 <html style="height: 100%; width: 100%;" manifest="/simpledocs/cache.manifest">
+<script>
+if (!navigator.onLine) {
+    window.location = "offline"
+}
+</script>
 
 <head>
     <meta charset="UTF-8">
