@@ -1,33 +1,21 @@
 <!doctype html>
-<html style="height: 100%; width: 100%;">
+<html style="height: 100%; width: 100%;" manifest="/cache.manifest">
 
 <head>
     <meta charset="UTF-8">
     <title>Docs</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina|Roboto|Slabo+27px" rel="stylesheet">
-    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
-    <script src="encryption.js"></script>
     <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyCsfQw_bK-jD-4i9u-76LRgTo09Ytv79QI",
-        authDomain: "brainstorminc-cdb06.firebaseapp.com",
-        databaseURL: "https://brainstorminc-cdb06.firebaseio.com",
-        storageBucket: "brainstorminc-cdb06.appspot.com",
-        messagingSenderId: "689044237443"
-    };
-    firebase.initializeApp(config);
-    var provider = new firebase.auth.GoogleAuthProvider();
-    var database = firebase.database();
+    jQuery(document).ready(function($) {
+        $('#content').hide();
+        $('#editor').hide();
+        $('#deletedocfab').hide();
+    });
     </script>
-    <script src="main.js"></script>
     <style>
     .docbtn:hover {
         background-color: #F3F3F3;
@@ -87,7 +75,7 @@
                 <h6 data-position="bottom" data-delay="50" data-tooltip="Save document" style="float: left; width: 15%;" class=" tooltipped btn-flat waves-effect waves-green grey-text" id="saved"><span style="width: 100%; text-align: center; margin-left: auto; margin-right: auto;" id="save-text">SAVED</span></h6>
                 <h5 style="text-align: center; margin-left: auto; margin-right: auto;"><span  data-position="bottom" data-delay="50" data-tooltip="Edit document title" id="documentname" class="tooltipped" contenteditable="true" style=" padding: 1%; padding-bottom: 0.5%; text-align: center;" ></span></h5></div>
             <div class="card-panel">
-                <div style="margin: 5px; min-height: 480px; " class="grey-text text-darken-3" id="beta-editor" contenteditable="true" spellcheck="true" lang="en">
+                <div style="margin: 5px; min-height: 480px; " class="grey-text text-darken-3" id="beta-editor" contenteditable="true" spellcheck="true">
                 </div>
             </div>
             <!--<textarea onkeyup="auto_grow(this)" id="editor-text" style=" resize: none; overflow: hidden; min-height: 50px; width: 100%; border-color: rgba(88,88,88,0.1);-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" ></textarea>-->
@@ -123,9 +111,7 @@
             </div>
         </div>
         <div id="newdocfab" class="fixed-action-btn">
-            <a id="newDoc" data-position="left" data-delay="50" data-tooltip="Create a new Doc" class="tooltipped btn-floating btn-large red">
-                <i class="large material-icons">add</i>
-            </a>
+            <a id="newDoc" data-position="left" data-delay="50" data-tooltip="Create a new Doc" class=" tooltipped btn-floating btn-large pulse red"><i class="large material-icons">add</i></a>
         </div>
         <div id="deletedocfab" class="fixed-action-btn">
             <a data-tooltip="Document menu" data-position="left" data-delay="50" id="settings" class="tooltipped btn-floating btn-large red">
@@ -134,7 +120,8 @@
             <ul>
                 <li id="share" data-tooltip="Get a public link" data-position="left" data-delay="50" class="tooltipped"><a href="#sharedoc" class="btn-floating blue"><i class="material-icons">link</i></a></li>
                 <li id="deletedoc" data-tooltip="Delete document" data-position="left" data-delay="50" class="tooltipped"><a class="btn-floating blue"><i class="material-icons">delete</i></a></li>
-                <li data-tooltip="Edit font settings" data-position="left" data-delay="50" class="tooltipped"><a href="#fontsettingsmodal" class="btn-floating blue"><i class="material-icons">format_size</i></a></li>
+                <li id="shortcuts" data-tooltip="Styling keyboard commands" data-position="left" data-delay="50" class="tooltipped"><a class="btn-floating blue" href="#shortcutmodal"><i class="material-icons">keyboard</i></a></li>
+                <li id="fontsettingsli" data-tooltip="Edit Typography(color,  font, size)" data-position="left" data-delay="50" class="tooltipped"><a href="#fontsettingsmodal" class="btn-floating blue"><i class="material-icons">format_size</i></a></li>
             </ul>
         </div>
         <div style="height: 95%" id="fontsettingsmodal" class="modal modal-fixed-footer">
@@ -207,6 +194,30 @@
                 <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
             </div>
         </div>
+        <div id="shortcutmodal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Keyboard commands</h4>
+                <div class="row">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><span style="font-weight: 600;">&#8984;+S</span> to save</td>
+                                <td><span style="font-weight: 600;">&#8984;+B</span> to make text bold</td>
+                                <td><span style="font-weight: 600;">&#8984;+U</span> to make text underlined</td>
+                            </tr>
+                            <tr>
+                                <td><span style="font-weight: 600;">&#8984;+I</span> to make text italic</td>
+                                <td><span style="font-weight: 600;">&#8984;+Z</span> to undo</td>
+                                <td><span style="font-weight: 600;">&#8984;+SHIFT+Z</span> to redo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+            </div>
+        </div>
         <div id="shareinfo" class="modal">
             <div class="modal-content">
                 <h4>Share this link</h4>
@@ -221,6 +232,26 @@
             </div>
         </div>
     </div>
+    <!-- loadding stuff-->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina|Roboto|Slabo+27px" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script src="encryption.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCsfQw_bK-jD-4i9u-76LRgTo09Ytv79QI",
+        authDomain: "brainstorminc-cdb06.firebaseapp.com",
+        databaseURL: "https://brainstorminc-cdb06.firebaseio.com",
+        storageBucket: "brainstorminc-cdb06.appspot.com",
+        messagingSenderId: "689044237443"
+    };
+    firebase.initializeApp(config);
+    var provider = new firebase.auth.GoogleAuthProvider();
+    var database = firebase.database();
+    </script>
+    <script src="main.js"></script>
     <script>
     $('document').ready(function(e) {
         $('.modal').modal();
