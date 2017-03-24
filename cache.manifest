@@ -8,6 +8,7 @@ CACHE:
 /simpledocs/main.js
 /simpledocs/js/materialize.min.js
 /simpledocs/css/materialize.min.css
+/simpledocs/jquery.in.js
 FALLBACK:
 / /simpledocs/offline.html
 NETWORK:
