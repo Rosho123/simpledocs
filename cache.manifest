@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v5
+# v6
 CACHE:
 /simpledocs/index.html
 /simpledocs/app.html
@@ -8,7 +8,7 @@ CACHE:
 /simpledocs/main.js
 /simpledocs/js/materialize.min.js
 /simpledocs/css/materialize.min.css
-/simpledocs/jquery.in.js
+/simpledocs/jquery.min.js
 FALLBACK:
 / /simpledocs/offline.html
 NETWORK:
