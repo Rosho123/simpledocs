@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v14
+# v15
 CACHE:
 js/materialize.min.js
 css/materialize.min.css
@@ -7,6 +7,7 @@ jquery.min.js
 offline.js
 index.html
 app.html
+edit.html
 FALLBACK:
 / offline.html
 NETWORK:
