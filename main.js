@@ -8,7 +8,39 @@ $.urlParam = function(name) {
 };
 var doctoload = $.urlParam('doc');
 var shareddoc = $.urlParam('shareddoc');
+new function($) {
+    $.fn.getCursorPosition = function() {
+        var pos = 0;
+        var el = $(this).get(0);
+        // IE Support
+        if (document.selection) {
+            el.focus();
+            var Sel = document.selection.createRange();
+            var SelLength = document.selection.createRange().text.length;
+            Sel.moveStart('character', -el.value.length);
+            pos = Sel.text.length - SelLength;
+        }
+        // Firefox support
+        else if (el.selectionStart || el.selectionStart == '0')
+            pos = el.selectionStart;
 
+        return pos;
+    }
+}(jQuery);
+
+new function($) {
+    $.fn.setCursorPosition = function(pos) {
+        if ($(this).get(0).setSelectionRange) {
+            $(this).get(0).setSelectionRange(pos, pos);
+        } else if ($(this).get(0).createTextRange) {
+            var range = $(this).get(0).createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', pos);
+            range.moveStart('character', pos);
+            range.select();
+        }
+    }
+}(jQuery);
 $('document').ready(function(e) {
     $('#content').hide();
     $('#editor').hide();
@@ -70,6 +102,9 @@ $('document').ready(function(e) {
                 uid = user.uid;
             }
             if (doctoload || shareddoc) {
+                if (window.location.href.indexOf("app") > -1) {
+                    window.location = '/app'
+                }
                 fontsautocompleate = {
                     data: {
                         "Roboto": null,
@@ -271,7 +306,7 @@ $('document').ready(function(e) {
                     $('#beta-editor').html(dcryptedcontent);
                     $('#loader').hide();
                     fontfam = $("#beta-editor *").css("font-family");
-                    console.log(fontfam);
+
                     fontfam = fontfam.replace(/['"]+/g, '')
                     WebFont.load({
                         google: {
@@ -309,13 +344,28 @@ $('document').ready(function(e) {
 
                     });
 
+                    $('#beta-editor').on('keydown', function(e) {
+                        var thecode = e.keyCode || e.which;
+
+                        if (thecode == 9) {
+                            e.preventDefault();
+                            var html = $('#beta-editor').val();
+                            var pos = $('#beta-editor').getCursorPosition(); // get cursor position
+                            var prepend = html.substring(0, pos);
+                            var append = html.replace(prepend, '');
+                            var newVal = prepend + '    ' + append;
+                            $('#beta-editor').val(newVal);
+                            $('#beta-editor').setCursorPosition(pos + 4);
+                        }
+                    });
+
 
                 });
                 docloadRef.on('value', function(snapshot) {
                     content = snapshot.val().content;
                     name = snapshot.val().name;
- setInterval(function() {
-                   
+                    setInterval(function() {
+
                         var currentcontent = $('#beta-editor').html();
 
                         var currentname = $('#documentname').text();
@@ -345,8 +395,8 @@ $('document').ready(function(e) {
 
                             $("#save-text").text("Unsaved");
                         }
-                  
-                    
+
+
                         var currentcontent = $('#beta-editor').html();
 
                         var currentname = $('#documentname').text();
@@ -376,9 +426,9 @@ $('document').ready(function(e) {
 
                             $("#save-text").text("Unsaved");
                         }
-                  
 
- }, 1000);
+
+                    }, 1000);
                     setInterval(function() {
                         var currentcontent = $('#beta-editor').html();;
 
@@ -516,7 +566,7 @@ $('document').ready(function(e) {
 
 
 
-                    var documentredirecturl = 'app?doc=' + currentDocKey;
+                    var documentredirecturl = 'edit?doc=' + currentDocKey;
                     $('#content').prepend('<div class="document-button" style="margin: 1%; width: 48%; float: left;"><a style="color: #777!important;" href="' + documentredirecturl + '"><div style=" position: relative;" class=" docbtn card-panel"><p class="doctxt grey-text text-darken-3" style="font-weight: 500; bottom: 50px; line-height: normal;"><i class="material-icons green-text text-lighten-1">insert_drive_file</i>&nbsp;' + dcryptdocname + '<span class="grey-text text-darken-3" style=" display: inline-block; white-space: nowrapoverflow: hidden;text-overflow: ellipsis; -o-text-overflow: ellipsis; width: 370px; font-weight: 300; color: #777!important;">&nbsp;' + preview + '...</span</p></div></a></div>');
                     $('#content').hide()
                     $('#content').fadeIn("slow")
