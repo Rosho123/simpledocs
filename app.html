@@ -1,135 +1,135 @@
 <!doctype html>
-<html style="height: 100%; width: 100%;" manifest="/simpledocs/cache.manifest">
+<html style="height: 100%; width: 100%;">
 <script>
-if (!navigator.onLine) {
+  if (!navigator.onLine) {
     window.location = "offline"
-}
+  }
 </script>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Docs</title>
-    <script src="jquery.min.js"></script>
-    <!-- Compiled and minified CSS -->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-    <!-- Compiled and minified JavaScript -->
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script>
+  <meta charset="UTF-8">
+  <title>Docs</title>
+  <script src="jquery.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <!-- Compiled and minified JavaScript -->
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script>
     jQuery(document).ready(function($) {
-        $('#content').hide();
+      $('#content').hide();
     });
-    </script>
-    <style>
+  </script>
+  <style>
     .docbtn:hover {
-        background-color: #F3F3F3;
-        transition-duration: 1s;
+      background-color: #F3F3F3;
+      transition-duration: 1s;
     }
-    
+
     .docbtn {
-        background-color: white;
-        transition-duration: 1s;
+      background-color: white;
+      transition-duration: 1s;
     }
-    
+
     #documentname {
-        transition-duration: .5s;
+      transition-duration: .5s;
     }
-    
+
     #documentname:hover {
-        transition-duration: .2s;
-        border: thin solid #C7C7C7;
+      transition-duration: .2s;
+      border: thin solid #C7C7C7;
     }
-    
+
     div:focus {
-        outline: rgba(88, 88, 88, 1.00);
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
+      outline: rgba(88, 88, 88, 1.00);
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
     }
-    
+
     span:focus {
-        outline: none;
+      outline: none;
     }
-    </style>
+  </style>
 </head>
 <header>
-    <nav>
-        <div class="white nav-wrapper">
-            <a href="/simpledocs/" class="brand-logo grey-text text-darken-3">&nbsp;&nbsp;Simple Docs</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse grey-text text-darken-3"><i class="grey-text text-darken-3 material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="grey-text text-darken-3" href="app">Docs</a></li>
-                <li><a class="grey-text text-darken-3 login" href="#">Login</a><a class="grey-text text-darken-3 logout" href="#">Logout</a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-                <li><a class="grey-text text-darken-3" href="app">Docs</a></li>
-                <li><a class="grey-text text-darken-3 login" href="#">Login</a><a class="grey-text text-darken-3 logout" href="#">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
+  <nav>
+    <div class="white nav-wrapper">
+      <a href="/simpledocs/" class="brand-logo grey-text text-darken-3">&nbsp;&nbsp;Simple Docs</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse grey-text text-darken-3"><i class="grey-text text-darken-3 material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="grey-text text-darken-3" href="app">Docs</a></li>
+        <li><a class="grey-text text-darken-3 login" href="#">Login</a><a class="grey-text text-darken-3 logout" href="#">Logout</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a class="grey-text text-darken-3" href="app">Docs</a></li>
+        <li><a class="grey-text text-darken-3 login" href="#">Login</a><a class="grey-text text-darken-3 logout" href="#">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
 </header>
 
 <body style=" background-color: rgba(238,238,238,1.00); height: 100%; width: 100%;">
-    <div id="loader" style="width: 100%; margin: 0px;" class="progress">
-        <div class="indeterminate"></div>
-    </div>
-    <div id="content" style="height: 100%;" class="container">
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <h4>Create new document</h4>
-                <div class="row">
-                    <form onSubmit=" event.preventDefault();$('#newdocument').trigger('click');" class="col s12">
-                        <div class="row">
-                            <div class="col s12">
-                                <div class="input-field">
-                                    <input id="newdocname" type="text" class="validate">
-                                    <label for="newdocname">New Doc Name</label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+  <div id="loader" style="width: 100%; margin: 0px;" class="progress">
+    <div class="indeterminate"></div>
+  </div>
+  <div id="content" style="height: 100%;" class="container">
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Create new document</h4>
+        <div class="row">
+          <form onSubmit=" event.preventDefault();$('#newdocument').trigger('click');" class="col s12">
+            <div class="row">
+              <div class="col s12">
+                <div class="input-field">
+                  <input id="newdocname" type="text" class="validate">
+                  <label for="newdocname">New Doc Name</label>
                 </div>
+              </div>
             </div>
-            <div class="modal-footer">
-                <a href="#!" id="newdocsubmit" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
-                <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
-            </div>
+          </form>
         </div>
-        <div id="newdocfab" class="fixed-action-btn">
-            <a id="newDoc" data-position="left" data-delay="50" data-tooltip="Create a new Doc" class=" tooltipped btn-floating btn-large pulse red"><i class="large material-icons">add</i></a>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" id="newdocsubmit" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+        <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+      </div>
     </div>
-    <!-- loadding stuff-->
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina|Roboto|Slabo+27px" rel="stylesheet">
-    <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
-    <script src="encryption.js"></script>
-    <script>
+    <div id="newdocfab" class="fixed-action-btn">
+      <a id="newDoc" data-position="left" data-delay="50" data-tooltip="Create a new Doc" class=" tooltipped btn-floating btn-large pulse red"><i class="large material-icons">add</i></a>
+    </div>
+  </div>
+  <!-- loadding stuff-->
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina|Roboto|Slabo+27px" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+  <script src="encryption.js"></script>
+  <script>
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyCsfQw_bK-jD-4i9u-76LRgTo09Ytv79QI",
-        authDomain: "brainstorminc-cdb06.firebaseapp.com",
-        databaseURL: "https://brainstorminc-cdb06.firebaseio.com",
-        storageBucket: "brainstorminc-cdb06.appspot.com",
-        messagingSenderId: "689044237443"
+      apiKey: "AIzaSyCsfQw_bK-jD-4i9u-76LRgTo09Ytv79QI",
+      authDomain: "brainstorminc-cdb06.firebaseapp.com",
+      databaseURL: "https://brainstorminc-cdb06.firebaseio.com",
+      storageBucket: "brainstorminc-cdb06.appspot.com",
+      messagingSenderId: "689044237443"
     };
     firebase.initializeApp(config);
     var provider = new firebase.auth.GoogleAuthProvider();
     var database = firebase.database();
-    </script>
-    <script src="main.js"></script>
-    <script>
+  </script>
+  <script src="main.js"></script>
+  <script>
     $('document').ready(function(e) {
-        $('.modal').modal();
-        $('select').material_select();
-        $('.tooltipped').tooltip({
-            delay: 50
-        });
-        $(".button-collapse").sideNav();
+      $('.modal').modal();
+      $('select').material_select();
+      $('.tooltipped').tooltip({
+        delay: 50
+      });
+      $(".button-collapse").sideNav();
 
 
     })
-    </script>
+  </script>
 </body>
 
 </html>
